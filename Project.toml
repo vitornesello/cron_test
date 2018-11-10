@@ -1,0 +1,6 @@
+authors = ["Vitor Nesello <vitornesello@gmail.com>"]
+name = "cron_test"
+uuid = "38280d82-e504-11e8-2b9e-3bebf2a33add"
+version = "0.1.0"
+
+[deps]
