@@ -9,8 +9,10 @@ struct CronStruct
 end
 
 function print_cron_struct(object::CronStruct)
-    println("This is ", object.id, ". Has index ", object.index,
+    message = string("This is ", object.id, ". Has index ", object.index,
             " and a value of ", object.value, ".")
+    println(message)
+    return message
 end
 
 
