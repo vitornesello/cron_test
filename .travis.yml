@@ -10,7 +10,5 @@ git:
   depth: 99999999
 
 - script:
-    - julia -e 'include("test/setup.jl"); setup()' $TRAVIS_EVENT_TYPE
     - julia -e '@show "CUSTOM SCRIPT"; @show ARGS; using Pkg; Pkg.build("cron_test"); Pkg.test("cron_test"; coverage=false)' $TRAVIS_EVENT_TYPE
-    - julia -e 'include("test/setup.jl"); setdown()' $TRAVIS_EVENT_TYPE
 
