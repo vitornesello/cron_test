@@ -16,7 +16,7 @@ matrix:
   include:
   - name: "running examples"
   - script: 
-    - julia -e '@show EXAMPLES JOB; using Pkg; Pkg.build("cron_test"); Pkg.test("cron_test"; coverage=false)'
+    - julia -e '@show "EXAMPLES JOB"; @show ARGS; using Pkg; Pkg.build("cron_test"); Pkg.test("cron_test"; coverage=false)' $TRAVIS_EVENT_TYPE
 
 #       - julia -e 'Pkg.clone(pwd())'
 #       - mv cron_test/Project.toml cron_test/Project_bckp.toml
