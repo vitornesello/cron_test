@@ -10,6 +10,36 @@ notifications:
 git:
   depth: 99999999
 
+# script:
+#   - julia -e '@show $TRAVIS_EVENT_TYPE; Pkg.clone(pwd()); Pkg.build("cron_test"); Pkg.test("cron_test"; coverage=false)'
+
+matrix:
+  include:
+  - name: "running examples"
+  - script: 
+    - julia -e 'Pkg.clone(pwd()); Pkg.build("cron_test"); Pkg.test("cron_test"; coverage=false)'
+
+#       - julia -e 'Pkg.clone(pwd())'
+#       - mv cron_test/Project.toml cron_test/Project_bckp.toml
+#       - mv Project_2.toml Project.toml
+#       - julia -e 'Pkg.build("cron_test"); include("cron_test/test/runtests2.jl")'
+
+# matrix:
+#   exclude:
+#   - name: "running examples"
+#     env: TRAVIS_EVENT_TYPE=cron
+#     push, pull_request, api, cron
+
+# jobs:
+#   include:
+#     - stage: "Documentation"
+#       julia: 1.0
+#       os: linux
+#       script:
+#         - julia --project=docs -e 'using Pkg; Pkg.instantiate(); Pkg.add(PackageSpec(path=pwd()))'
+#         - julia --project=docs --color=yes docs/make.jl
+#       after_success: skip
+
 ## uncomment the following lines to allow failures on nightly julia
 ## (tests will run but not make your overall status red)
 #matrix:
