@@ -12,13 +12,8 @@ git:
 matrix:
   include:
   - name: "running examples"
-  - script: 
+  - script:
     - julia -e 'include("test/setup.jl"); setup()' $TRAVIS_EVENT_TYPE
-    - julia -e '@show "CUSTOM SCRIPT"; @show ARGS; using Pkg; Pkg.build("cron_test"); Pkg.test("cron_test"; coverage=false)' $TRAVIS_EVENT_TYPE
+    - julia -e 'using Pkg && Pkg.build("cron_test")'
+    - julia -e '@show "CUSTOM SCRIPT"; @show ARGS; include("test/runtests.jl")' $TRAVIS_EVENT_TYPE
     - julia -e 'include("test/setup.jl"); setdown()' $TRAVIS_EVENT_TYPE
-
-# - script:
-#     - julia -e 'include("test/setup.jl"); setup()' $TRAVIS_EVENT_TYPE
-#     - julia -e '@show "CUSTOM SCRIPT"; @show ARGS; using Pkg; Pkg.build("cron_test"); Pkg.test("cron_test"; coverage=false)' $TRAVIS_EVENT_TYPE
-#     - julia -e 'include("test/setup.jl"); setdown()' $TRAVIS_EVENT_TYPE
-
