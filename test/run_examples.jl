@@ -1,3 +1,5 @@
+using Test
+using cron_test
 using TimerOutputs
 
 println("Running examples tests")
