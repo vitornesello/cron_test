@@ -14,6 +14,6 @@ matrix:
   - name: "running examples"
   - script:
     - julia -e 'include("test/setup.jl"); setup()' $TRAVIS_EVENT_TYPE
-    - julia -e 'using Pkg && Pkg.build("cron_test")'
+    - julia -e 'using Pkg; Pkg.build("cron_test")'
     - julia -e '@show "CUSTOM SCRIPT"; @show ARGS; include("test/runtests.jl")' $TRAVIS_EVENT_TYPE
     - julia -e 'include("test/setup.jl"); setdown()' $TRAVIS_EVENT_TYPE
